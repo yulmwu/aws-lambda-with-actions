@@ -14,6 +14,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: For Debug
+        run: |
+          echo "AWS_REGION=${{ secrets.AWS_REGION }}"
+          echo "LAMBDA_FUNCTION_NAME=${{ secrets.LAMBDA_FUNCTION_NAME }}"            
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
