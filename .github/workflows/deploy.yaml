@@ -35,9 +35,6 @@ jobs:
           rm -rf node_modules
           npm ci --omit=dev
 
-      - name: Build TypeScript
-        run: npm run build
-
       - name: Zip Lambda function
         run: |
           zip -r function.zip dist/* node_modules/
