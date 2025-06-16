@@ -44,6 +44,6 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
 
     return {
         statusCode: 404,
-        body: JSON.stringify({ message: 'Not Found' }),
+        body: JSON.stringify({ message: `Not Found: ${httpMethod} ${path}` }),
     }
 }
