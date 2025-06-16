@@ -3,3 +3,4 @@ build
 function.zip
 .DS_Store
 **/test.*.ts
+dist
