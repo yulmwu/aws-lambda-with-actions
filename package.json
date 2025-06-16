@@ -13,8 +13,17 @@
     "license": "MIT",
     "author": "",
     "type": "module",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "tsc",
+        "package": "zip -r function.zip dist/* node_modules/",
+        "deploy": "npm run build && aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME --zip-file fileb://function.zip"
+    },
+    "dependencies": {
+        "aws-lambda": "^1.0.7"
+    },
+    "devDependencies": {
+        "typescript": "^5.1.3",
+        "@types/aws-lambda": "^8.10.114"
     }
 }
