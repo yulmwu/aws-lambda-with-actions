@@ -1,0 +1,20 @@
+{
+    "name": "lambda-github-actions",
+    "version": "1.0.0",
+    "description": "",
+    "homepage": "https://github.com/yulmwu/aws-lambda-with-actions#readme",
+    "bugs": {
+        "url": "https://github.com/yulmwu/aws-lambda-with-actions/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yulmwu/aws-lambda-with-actions.git"
+    },
+    "license": "MIT",
+    "author": "",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
