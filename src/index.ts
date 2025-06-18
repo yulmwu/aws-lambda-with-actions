@@ -1,49 +1,18 @@
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
+import { APIGatewayProxyEventV2, APIGatewayProxyResult } from 'aws-lambda'
 
-export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-    const { httpMethod, path, pathParameters } = event
+export const handler = async (event: APIGatewayProxyEventV2): Promise<APIGatewayProxyResult> => {
+    const method = event.requestContext.http.method
+    const path = event.rawPath
 
-    if (path === '/items' && httpMethod === 'GET') {
+    if (method === 'GET' && path === '/') {
         return {
             statusCode: 200,
-            body: JSON.stringify({ message: 'GET /items' }),
-        }
-    }
-
-    if (path === '/items' && httpMethod === 'POST') {
-        return {
-            statusCode: 200,
-            body: JSON.stringify({ message: 'POST /items' }),
-        }
-    }
-
-    if (path?.startsWith('/items/') && pathParameters?.id) {
-        const id = pathParameters.id
-
-        if (httpMethod === 'GET') {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: `GET /items/${id}` }),
-            }
-        }
-
-        if (httpMethod === 'PUT') {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: `PUT /items/${id}` }),
-            }
-        }
-
-        if (httpMethod === 'DELETE') {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: `DELETE /items/${id}` }),
-            }
+            body: JSON.stringify({ message: 'Hello from /' }),
         }
     }
 
     return {
         statusCode: 404,
-        body: JSON.stringify({ message: `Not Found: ${httpMethod} ${path}` }),
+        body: JSON.stringify({ message: `Not found: ${method} ${path}` }),
     }
 }
